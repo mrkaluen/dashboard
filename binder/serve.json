@@ -1,3 +1,13 @@
-#!/bin/bash
-python simulatore.py
-python dashboard.py
+{
+  "scripts": {
+    "start": "bash run_app.sh"
+  },
+  "urls": [
+    {
+      "url": "/",
+      "title": "La Mia Dashboard",
+      "newWindow": true
+    }
+  ],
+  "wait_service": true
+}
