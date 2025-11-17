@@ -93,7 +93,7 @@ df_econ["Margine"] = df_econ["Ricavo"] - df_econ["Costo_totale_mansione"]
 
 # DASH
 
-app = JupyterDash(__name__, external_stylesheets=[dbc.themes.DARKLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
 
 anni_disponibili = sorted(df_clima["Anno"].unique())
@@ -1048,7 +1048,7 @@ def aggiorna_grafici(anno, coltura):
 
 
 if __name__ == "__main__":
-    app.run_server(mode="inline")
+    app.run_server(host="0.0.0.0", port=int(os.environ.get("PORT", 8888)), debug=True)
 
 
 
