@@ -8,6 +8,7 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, Input, Output, dash_table
 from IPython.display import HTML
 import dash_bootstrap_components as dbc
+from jupyter_dash import JupyterDash
 import simulatore
 
 
@@ -92,7 +93,7 @@ df_econ["Margine"] = df_econ["Ricavo"] - df_econ["Costo_totale_mansione"]
 
 # DASH
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
+app = JupyterDash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
 
 anni_disponibili = sorted(df_clima["Anno"].unique())
@@ -412,8 +413,6 @@ app.layout = dbc.Container([
     Output("grafico-semitorta_alberi", "figure"),
     Output("grafico-grafici_riassuntivi", "figure"),
     Output("grafico-stima_danni", "figure"),
-#    Output('tabella-df', 'columns'),
-#    Output('tabella-df', 'data'),
     Input("anno-dropdown", "value"),
     Input("coltura-dropdown", "value")
 )
@@ -917,13 +916,9 @@ def aggiorna_grafici(anno, coltura):
 
 # aggrega df per evitare somma di totali in ricavo e in resa in oliveto
     
-    
     df_coltura_agg = df_aggiorna_coltura.groupby(["Anno", "Coltura", "Varietà"], as_index=False).agg({"Quantità Ha": "sum", "Ricavo Ha": "sum"})
-
     df_raccolta_agg = df_aggiorna_raccolta.groupby(["Anno", "Coltura", "Varietà"], as_index=False).agg({"Profitto Ha": "first"})
-
     df_ettaro = df_raccolta_agg.merge(df_coltura_agg, on=["Anno", "Coltura", "Varietà"], how="left")
-
     df_ettaro = df_ettaro.groupby(["Anno", "Coltura"], as_index=False).agg({"Quantità Ha": "sum", "Ricavo Ha": "sum", "Profitto Ha": "first"})
 
 
@@ -1028,25 +1023,6 @@ def aggiorna_grafici(anno, coltura):
 
 
 
-
-# per la visualizz del df, da cancellare alla fine
-
-    
-    df_ciliegeto = df_ciliegeto[df_ciliegeto["Anno"] == anno]
-    if coltura != "Tutte":
-        
-        df_ciliegeto = df_ciliegeto[df_ciliegeto["Coltura"] == coltura]
-#    else:
-    columns=[{"name": i, "id": i} for i in df_ciliegeto.columns]
-    data=df_ciliegeto.to_dict('records')
-
-
-
-
-
-
-
-
     
     
     
@@ -1072,7 +1048,7 @@ def aggiorna_grafici(anno, coltura):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8050, mode="inline")
+    app.run_server(mode="inline")
 
 
 
