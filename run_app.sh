@@ -1,3 +1,1 @@
-#!/bin/bash
-python simulatore.py
-python dashboard.py
+export JUPYTERHUB_SERVICE_PREFIX=${JUPYTERHUB_BASE_URL:-/}
