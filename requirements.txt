@@ -1,8 +1,0 @@
-numpy
-pandas
-plotly
-dash
-dash-bootstrap-components
-jupyter
-jupyter-dash
-openpyxl
