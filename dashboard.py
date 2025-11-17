@@ -809,9 +809,9 @@ def aggiorna_grafici(anno, coltura):
             [
             dbc.CardHeader(row["Varietà"] + " (per albero)"),
             dbc.CardBody([
-                html.P(["RESA", html.Br(), f"{row["Quantità Albero"]:,.2f} kg"]),
-                html.P(["RICAVO", html.Br(), f"{row["Ricavo Albero"]:,.2f} €"]),
-                html.P(["IPR", html.Br(), f"{row["IPR"]:,.2f} €"])
+                html.P(["RESA", html.Br(), f"{row['Quantità Albero']:,.2f} kg"]),
+                html.P(["RICAVO", html.Br(), f"{row['Ricavo Albero']:,.2f} €"]),
+                html.P(["IPR", html.Br(), f"{row['IPR']:,.2f} €"])
             ])
         ], color="#5a5a5a", style={"textAlign": "center"}, className="mb-3")
     for _, row in df_varieta.iterrows()
