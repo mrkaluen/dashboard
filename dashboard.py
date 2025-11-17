@@ -94,7 +94,7 @@ df_econ["Margine"] = df_econ["Ricavo"] - df_econ["Costo_totale_mansione"]
 
 # DASH
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
+app = Dash(__name__, requests_pathname_prefix=prefix, external_stylesheets=[dbc.themes.DARKLY])
 
 
 anni_disponibili = sorted(df_clima["Anno"].unique())
