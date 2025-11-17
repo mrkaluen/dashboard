@@ -5,6 +5,7 @@ import random
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import os
 from dash import Dash, dcc, html, Input, Output, dash_table
 from IPython.display import HTML
 import dash_bootstrap_components as dbc
@@ -1048,8 +1049,7 @@ def aggiorna_grafici(anno, coltura):
 
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 8888))
+    port = int(os.environ.get("PORT", 8050))
     app.run(host="0.0.0.0", port=port, debug=True)
 
 
