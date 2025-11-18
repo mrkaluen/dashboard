@@ -8,7 +8,6 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, Input, Output, dash_table
 from IPython.display import HTML
 import dash_bootstrap_components as dbc
-import import_ipynb
 import simulatore
 
 
