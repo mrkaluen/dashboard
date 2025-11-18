@@ -1072,4 +1072,4 @@ def aggiorna_grafici(anno, coltura):
 
 
 if __name__ == "__main__":
-    app.run_server(mode='external', host='0.0.0.0', port=8888, debug=True)
+    app.run(mode='external', host='0.0.0.0', port=8888, debug=True)
