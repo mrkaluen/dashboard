@@ -8,6 +8,7 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, Input, Output, dash_table
 from IPython.display import HTML
 import dash_bootstrap_components as dbc
+import os
 import simulatore
 
 
@@ -1072,4 +1073,5 @@ def aggiorna_grafici(anno, coltura):
 
 
 if __name__ == "__main__":
-    app.run(mode='external', host='0.0.0.0', port=8888, debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(mode='external', host='0.0.0.0', port=port, debug=True)
